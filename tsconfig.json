@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true, // 跳过库的检查
+    "suppressImplicitAnyIndexErrors": true, // 运行通过对象的aa.bb的方式取值
+    "experimentalDecorators": true, // 去除 装饰器 可能被废弃警告
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    // "isolatedModules": true,
+    "noImplicitAny": false, // 允许隐式any
+    "strictNullChecks": false, // 不检测null和undefined的赋值
+    "types": ["node"], // 引入node的类型定义 在./node_modules/@types 下查找
+    "lib": ["esnext", "dom"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
+  "exclude": ["node_modules"]
+}
