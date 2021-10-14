@@ -1,6 +1,6 @@
 import excelPort from "excel-export";
 import fs from "fs";
-import { staticRoutes } from "./static.js";
+import { staticRoutes } from "./static";
 
 // 表头
 const cols = [
