@@ -1,3 +1,8 @@
+/**
+ * @Author: wenlin
+ * @Description: 将本地静态route转换为三中心能导入的Excel
+ */
+
 import excelPort from "excel-export";
 import fs from "fs";
 import { staticRoutes } from "./static";
