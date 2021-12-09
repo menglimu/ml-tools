@@ -1,4 +1,4 @@
-
+// import btoa from 'btoa'
 
 export function createRandomId() {
   return (
@@ -12,9 +12,9 @@ export function createRandomId() {
       .substr(2, 5)
   );
 }
-const dataHost = 'http://10.8.191.62:7080'
-export const staticRoutes = 
-[
+const dataHost = 'http://51.100.6.122:7080'
+// const window = global
+export const staticRoutes = [
   {
     id: 'KEYCROWD',
     text: '重点人群建库',
@@ -35,7 +35,7 @@ export const staticRoutes =
             icon: '',
             id: 'KEYCROWD_02.01',
             leaf: false,
-            
+            nodeType: 2,
             systemType: 0,
             text: '重点人群信息管理',
             url: '/keycordinfomanage',
@@ -43,7 +43,7 @@ export const staticRoutes =
           }
         ],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -60,7 +60,7 @@ export const staticRoutes =
             icon: '',
             id: 'KEYCROWD_03.01',
             leaf: false,
-            
+            nodeType: 2,
             systemType: 0,
             text: '重点人群建模审批',
             url: '/imagemodel/modelingaudit',
@@ -72,7 +72,7 @@ export const staticRoutes =
             icon: '',
             id: 'KEYCROWD_03.02',
             leaf: false,
-            
+            nodeType: 2,
             systemType: 0,
             text: '重点人像建模任务',
             url: '/imagemodel/modelingtask',
@@ -80,7 +80,7 @@ export const staticRoutes =
           }
         ],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -97,7 +97,7 @@ export const staticRoutes =
             icon: '',
             id: 'KEYCROWD_04.01',
             leaf: false,
-            
+            nodeType: 2,
             systemType: 0,
             text: '标签管理',
             url: '/labelmanage',
@@ -105,7 +105,7 @@ export const staticRoutes =
           }
         ],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -122,7 +122,7 @@ export const staticRoutes =
             icon: '',
             id: 'KEYCROWD_05.01',
             leaf: false,
-            
+            nodeType: 2,
             systemType: 0,
             text: '批量关联管理',
             url: '/areamange/batchcontact',
@@ -134,7 +134,7 @@ export const staticRoutes =
             icon: '',
             id: 'KEYCROWD_05.02',
             leaf: false,
-            
+            nodeType: 2,
             systemType: 0,
             text: '未分配人员管理',
             url: '/areamange/unassignedperson',
@@ -143,7 +143,7 @@ export const staticRoutes =
         ],
 
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       }
@@ -160,7 +160,7 @@ export const staticRoutes =
       //       icon: '',
       //       id: 'KEYCROWD_04.01',
       //       leaf: false,
-      //       
+      //       nodeType: 2,
       //       systemType: 0,
       //       text: '自动备份',
       //       url: '/storagewarning/automaticbackup',
@@ -168,10 +168,142 @@ export const staticRoutes =
       //     }
       //   ],
       //   icon: 'nav_maincommand',
-      //   
+      //   nodeType: 0,
       //   systemType: 0,
       //   pids: []
       // }
+    ]
+  },
+  {
+    id: 'KEYPERSONNEL',
+    text: '系统管理',
+    leaf: false,
+    expanded: true,
+    // url: '/keypersonnel',
+    url: '',
+    children: [
+      {
+        id: createRandomId(),
+        text: '存储预警',
+        leaf: false,
+        expanded: true,
+        url: '/sys/warn',
+        icon: 'nav_maincommand',
+        nodeType: 0,
+        systemType: 0,
+        pids: [],
+        children: [
+          {
+            id: createRandomId(),
+            text: '存储预警',
+            leaf: false,
+            expanded: true,
+            url: '/sys/warn/warn',
+            children: [],
+            icon: 'nav_maincommand',
+            nodeType: 0,
+            systemType: 0,
+            pids: []
+          },
+          {
+            id: createRandomId(),
+            text: '自动备份',
+            leaf: false,
+            expanded: true,
+            url: '/sys/warn/backup',
+            children: [],
+            icon: 'nav_maincommand',
+            nodeType: 0,
+            systemType: 0,
+            pids: []
+          },
+          {
+            id: createRandomId(),
+            text: '预警记录',
+            leaf: false,
+            expanded: true,
+            url: '/sys/warn/record',
+            children: [],
+            icon: 'nav_maincommand',
+            nodeType: 0,
+            systemType: 0,
+            pids: []
+          },
+          {
+            id: createRandomId(),
+            text: '回滚记录',
+            leaf: false,
+            expanded: true,
+            url: '/sys/warn/rollback',
+            children: [],
+            icon: 'nav_maincommand',
+            nodeType: 0,
+            systemType: 0,
+            pids: []
+          }
+        ]
+      },
+      // {
+      //   id: 'KEYPERSONNEL_03',
+      //   text: '外部链接',
+      //   leaf: false,
+      //   expanded: true,
+      //   url: '/iframe/http://172.23.25.39:7080/web/index.html#/Data-development/taskdev?a=12',
+      //   children: [],
+      //   icon: 'nav_maincommand',
+      //   nodeType: 0,
+      //   systemType: 0,
+      //   pids: []
+      // },
+      {
+        id: createRandomId(),
+        text: '日志管理',
+        leaf: false,
+        expanded: true,
+        url: '/sys/log',
+        icon: 'nav_maincommand',
+        nodeType: 0,
+        systemType: 0,
+        pids: [],
+        children: [
+          {
+            id: createRandomId(),
+            text: '登录日志',
+            leaf: false,
+            expanded: true,
+            url: '/sys/log/access',
+            children: [],
+            icon: 'nav_maincommand',
+            nodeType: 0,
+            systemType: 0,
+            pids: []
+          },
+          {
+            id: createRandomId(),
+            text: '业务日志',
+            leaf: false,
+            expanded: true,
+            url: '/sys/log/biz',
+            children: [],
+            icon: 'nav_maincommand',
+            nodeType: 0,
+            systemType: 0,
+            pids: []
+          },
+          {
+            id: createRandomId(),
+            text: '错误日志',
+            leaf: false,
+            expanded: true,
+            url: '/sys/log/err',
+            children: [],
+            icon: 'nav_maincommand',
+            nodeType: 0,
+            systemType: 0,
+            pids: []
+          }
+        ]
+      }
     ]
   },
   {
@@ -190,7 +322,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-development/taskdev`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -202,7 +334,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-development/collect`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -214,7 +346,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-development/real-time-task`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -226,7 +358,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-development/sql-template`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -238,7 +370,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-development/task-tag`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       }
@@ -260,7 +392,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-management/mdata`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -272,7 +404,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-management/datasource`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -284,7 +416,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-management/file-management`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       },
@@ -296,7 +428,7 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-management/data-dictionary`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
       }
@@ -318,142 +450,9 @@ export const staticRoutes =
         url: `/iframe/${dataHost}/web/index.html#/Data-catalogue/my-interface`,
         children: [],
         icon: 'nav_maincommand',
-        
+        nodeType: 0,
         systemType: 0,
         pids: []
-      }
-    ]
-  },
-
-  {
-    id: 'KEYPERSONNEL',
-    text: '综合管理',
-    leaf: false,
-    expanded: true,
-    // url: '/keypersonnel',
-    url: '',
-    children: [
-      {
-        id: createRandomId(),
-        text: '存储预警',
-        leaf: false,
-        expanded: true,
-        url: '',
-        icon: 'nav_maincommand',
-        
-        systemType: 0,
-        pids: [],
-        children: [
-          {
-            id: createRandomId(),
-            text: '存储预警',
-            leaf: false,
-            expanded: true,
-            url: '/sys/warn/warn',
-            children: [],
-            icon: 'nav_maincommand',
-            
-            systemType: 0,
-            pids: []
-          },
-          {
-            id: createRandomId(),
-            text: '自动备份',
-            leaf: false,
-            expanded: true,
-            url: '/sys/warn/backup',
-            children: [],
-            icon: 'nav_maincommand',
-            
-            systemType: 0,
-            pids: []
-          },
-          {
-            id: createRandomId(),
-            text: '预警记录',
-            leaf: false,
-            expanded: true,
-            url: '/sys/warn/record',
-            children: [],
-            icon: 'nav_maincommand',
-            
-            systemType: 0,
-            pids: []
-          },
-          {
-            id: createRandomId(),
-            text: '回滚记录',
-            leaf: false,
-            expanded: true,
-            url: '/sys/warn/rollback',
-            children: [],
-            icon: 'nav_maincommand',
-            
-            systemType: 0,
-            pids: []
-          }
-        ]
-      },
-      // {
-      //   id: 'KEYPERSONNEL_03',
-      //   text: '外部链接',
-      //   leaf: false,
-      //   expanded: true,
-      //   url: '/iframe/http://172.23.25.39:7080/web/index.html#/Data-development/taskdev?a=12',
-      //   children: [],
-      //   icon: 'nav_maincommand',
-      //   
-      //   systemType: 0,
-      //   pids: []
-      // },
-      {
-        id: createRandomId(),
-        text: '日志管理',
-        leaf: false,
-        expanded: true,
-        url: '',
-        icon: 'nav_maincommand',
-        
-        systemType: 0,
-        pids: [],
-        children: [
-          {
-            id: createRandomId(),
-            text: '登录日志',
-            leaf: false,
-            expanded: true,
-            url: '/sys/log/access',
-            children: [],
-            icon: 'nav_maincommand',
-            
-            systemType: 0,
-            pids: []
-          },
-          {
-            id: createRandomId(),
-            text: '业务日志',
-            leaf: false,
-            expanded: true,
-            url: '/sys/log/biz',
-            children: [],
-            icon: 'nav_maincommand',
-            
-            systemType: 0,
-            pids: []
-          },
-          {
-            id: createRandomId(),
-            text: '错误日志',
-            leaf: false,
-            expanded: true,
-            url: '/sys/log/err',
-            children: [],
-            icon: 'nav_maincommand',
-            
-            systemType: 0,
-            pids: []
-          }
-        ]
       }
     ]
   }
