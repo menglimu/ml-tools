@@ -1,4 +1,3 @@
-// import btoa from 'btoa'
 
 export function createRandomId() {
   return (
