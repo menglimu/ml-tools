@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * @Author: wenlin
  * @Description: 根据接口文档自动生成api
