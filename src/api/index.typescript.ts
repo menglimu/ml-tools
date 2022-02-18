@@ -385,7 +385,7 @@ function get(url: string, options?) {
             const parsedData = JSON.parse(rawData);
             resolve(parsedData);
           } catch (e) {
-            console.error(e.message);
+            console.error(e);
             reject(e);
           }
         });

@@ -14,7 +14,7 @@
     // "isolatedModules": true,
     "noImplicitAny": false, // 允许隐式any
     "strictNullChecks": false, // 不检测null和undefined的赋值
-    "types": ["node","jest"], // 引入node的类型定义 在./node_modules/@types 下查找
+    "types": ["node", "jest"], // 引入node的类型定义 在./node_modules/@types 下查找
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "paths": {

@@ -3,26 +3,26 @@
  * @Description: 根据接口文档自动生成api
  */
 
-/* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/prefer-optional-chain */
-
 import * as fs from "fs";
-import * as path from "path";
 import * as child_process from "child_process";
 import get from "./get";
-import { Group, Interface, Method, Module } from "./type";
-const __dirname: string = path.resolve();
+import { Group, Interface, Module } from "./type";
 
 // TODO: 加载指定tag
 // TODO: 一个接口存在多个tag中的时候
 // TODO: 部分更新的时候的处理  -暂无处理方案 - -
 
-class GenerateApis {
-  private url = "http://10.10.77.129:8080"; // 接口的地址
-  private API_PATH = path.resolve(__dirname, "./modules_generate"); // 接口保存的路径
+export default class GenerateApis {
+  private url = ""; // 接口的地址
+  private dir = ""; // 接口保存的路径
   // 当前处理的group
   private group: Group;
+
+  constructor(url: string, dir = "src/api/modules_generate") {
+    this.url = url;
+    this.dir = dir;
+  }
+
   // 获取所有接口组
   public async getAll() {
     // 获取文档模块列表
@@ -132,7 +132,7 @@ class GenerateApis {
       text += module.interfaces.map((item) => this.insertApi(item)).join("\n");
 
       // 路径
-      let path = `${this.API_PATH}${this.group.name ? `/${this.group.name}` : ""}`;
+      let path = `${this.dir}${this.group.name ? `/${this.group.name}` : ""}`;
       let fileName = path + "/" + module.name + ".ts";
       fs.mkdirSync(path, { recursive: true });
       // 写入文件
@@ -152,8 +152,8 @@ class GenerateApis {
     return text ? String(text).replace(/\*\//g, "*\\") : "";
   }
 }
-
-let generateApis = new GenerateApis();
+const args = process.argv.splice(2);
+let generateApis = new GenerateApis(args[0], args[1] || undefined);
 generateApis.getAll();
 // generateApis.getGroup(
 //   "http://10.10.77.129:8080/v2/api-docs?group=%E4%B8%89%E4%B8%AD%E5%BF%83%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81",

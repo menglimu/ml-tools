@@ -1,0 +1,12 @@
+{
+  // 每次保存的时候自动格式化
+  "editor.formatOnSave": true,
+  // 保存使用 prettier 进行格式化
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 保存时的操作
+  "editor.codeActionsOnSave": {
+    // "source.fixAll": true, // 修复所有
+    "source.fixAll.eslint": true, // 修复 eslint
+    "source.fixAll.stylelint": true // 修复 stylelint
+  }
+}
