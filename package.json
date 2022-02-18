@@ -7,7 +7,7 @@
   "scripts": {
     "route": "node --experimental-specifier-resolution=node --loader ts-node/esm src/route2excel/index.ts",
     "api": "node --experimental-specifier-resolution=node --loader ts-node/esm src/api/index.ts",
-    "version": "node --experimental-specifier-resolution=node --loader ts-node/esm src/version/index.ts",
+    "ml-version": "node --experimental-specifier-resolution=node --loader ts-node/esm src/version/index.ts",
     "build": "rollup -c",
     "patch": "npm run build && npm version patch && npm publish",
     "test": "jest"
