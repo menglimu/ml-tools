@@ -11,7 +11,7 @@ export default defineConfig({
   // external: (name) => /.*excel-export.*/.test(name), // ['excel-export']
   output: {
     dir: "bin",
-    format: "cjs",
+    format: "es",
     // file: ["ml-version.js", "ml-api.js"],
     sourcemap: false,
   },

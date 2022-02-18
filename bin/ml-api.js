@@ -1,32 +1,6 @@
-'use strict';
-
-var fs = require('fs');
-var path = require('path');
-var child_process = require('child_process');
-var http = require('http');
-
-function _interopNamespace(e) {
-    if (e && e.__esModule) return e;
-    var n = Object.create(null);
-    if (e) {
-        Object.keys(e).forEach(function (k) {
-            if (k !== 'default') {
-                var d = Object.getOwnPropertyDescriptor(e, k);
-                Object.defineProperty(n, k, d.get ? d : {
-                    enumerable: true,
-                    get: function () { return e[k]; }
-                });
-            }
-        });
-    }
-    n["default"] = e;
-    return Object.freeze(n);
-}
-
-var fs__namespace = /*#__PURE__*/_interopNamespace(fs);
-var path__namespace = /*#__PURE__*/_interopNamespace(path);
-var child_process__namespace = /*#__PURE__*/_interopNamespace(child_process);
-var http__namespace = /*#__PURE__*/_interopNamespace(http);
+import * as fs from 'fs';
+import * as child_process from 'child_process';
+import * as http from 'http';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -56,7 +30,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
 // 根据node的http模块进行数据的请求
 function get(url, options) {
     return new Promise((resolve, reject) => {
-        http__namespace
+        http
             .get(url, options, res => {
             const { statusCode } = res;
             const contentType = res.headers["content-type"];
@@ -100,14 +74,15 @@ function get(url, options) {
  * @Author: wenlin
  * @Description: 根据接口文档自动生成api
  */
-const __dirname$1 = path__namespace.resolve();
 // TODO: 加载指定tag
 // TODO: 一个接口存在多个tag中的时候
 // TODO: 部分更新的时候的处理  -暂无处理方案 - -
 class GenerateApis {
-    constructor() {
-        this.url = "http://10.10.77.129:8080"; // 接口的地址
-        this.API_PATH = path__namespace.resolve(__dirname$1, "./modules_generate"); // 接口保存的路径
+    constructor(url, dir = "src/api/modules_generate") {
+        this.url = ""; // 接口的地址
+        this.dir = ""; // 接口保存的路径
+        this.url = url;
+        this.dir = dir;
     }
     // 获取所有接口组
     getAll() {
@@ -207,13 +182,13 @@ class GenerateApis {
             // 接口请求function
             text += module.interfaces.map((item) => this.insertApi(item)).join("\n");
             // 路径
-            let path = `${this.API_PATH}${this.group.name ? `/${this.group.name}` : ""}`;
+            let path = `${this.dir}${this.group.name ? `/${this.group.name}` : ""}`;
             let fileName = path + "/" + module.name + ".ts";
-            fs__namespace.mkdirSync(path, { recursive: true });
+            fs.mkdirSync(path, { recursive: true });
             // 写入文件
-            fs__namespace.writeFileSync(fileName, text);
+            fs.writeFileSync(fileName, text);
             // 使用prettier格式代码
-            child_process__namespace.exec(`npx prettier ${fileName} --write`, function (error, stdout, stderr) {
+            child_process.exec(`npx prettier ${fileName} --write`, function (error, stdout, stderr) {
                 if (error !== null) {
                     console.error("exec error: " + error);
                 }
@@ -226,9 +201,12 @@ class GenerateApis {
         return text ? String(text).replace(/\*\//g, "*\\") : "";
     }
 }
-let generateApis = new GenerateApis();
+const args = process.argv.splice(2);
+let generateApis = new GenerateApis(args[0], args[1] || undefined);
 generateApis.getAll();
 // generateApis.getGroup(
 //   "http://10.10.77.129:8080/v2/api-docs?group=%E4%B8%89%E4%B8%AD%E5%BF%83%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81",
 // );
 // generateApis.getGroup("http://10.10.77.129:8080/v2/api-docs?group=%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE");
+
+export { GenerateApis as default };
