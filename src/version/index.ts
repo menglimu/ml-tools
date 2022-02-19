@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+// bin
 import { execSync } from "child_process";
 import fs from "fs";
 

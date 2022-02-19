@@ -1,6 +1,31 @@
-import * as fs from 'fs';
-import * as child_process from 'child_process';
-import * as http from 'http';
+#!/usr/bin/env node
+'use strict';
+
+var fs = require('fs');
+var child_process = require('child_process');
+var http = require('http');
+
+function _interopNamespace(e) {
+    if (e && e.__esModule) return e;
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
+        });
+    }
+    n["default"] = e;
+    return Object.freeze(n);
+}
+
+var fs__namespace = /*#__PURE__*/_interopNamespace(fs);
+var child_process__namespace = /*#__PURE__*/_interopNamespace(child_process);
+var http__namespace = /*#__PURE__*/_interopNamespace(http);
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -30,7 +55,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
 // 根据node的http模块进行数据的请求
 function get(url, options) {
     return new Promise((resolve, reject) => {
-        http
+        http__namespace
             .get(url, options, res => {
             const { statusCode } = res;
             const contentType = res.headers["content-type"];
@@ -184,11 +209,11 @@ class GenerateApis {
             // 路径
             let path = `${this.dir}${this.group.name ? `/${this.group.name}` : ""}`;
             let fileName = path + "/" + module.name + ".ts";
-            fs.mkdirSync(path, { recursive: true });
+            fs__namespace.mkdirSync(path, { recursive: true });
             // 写入文件
-            fs.writeFileSync(fileName, text);
+            fs__namespace.writeFileSync(fileName, text);
             // 使用prettier格式代码
-            child_process.exec(`npx prettier ${fileName} --write`, function (error, stdout, stderr) {
+            child_process__namespace.exec(`npx prettier ${fileName} --write`, function (error, stdout, stderr) {
                 if (error !== null) {
                     console.error("exec error: " + error);
                 }
@@ -209,4 +234,4 @@ generateApis.getAll();
 // );
 // generateApis.getGroup("http://10.10.77.129:8080/v2/api-docs?group=%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE");
 
-export { GenerateApis as default };
+module.exports = GenerateApis;
