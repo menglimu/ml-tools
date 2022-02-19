@@ -3,8 +3,7 @@ import { defineConfig } from "rollup";
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import clear from "rollup-plugin-clear";
-import replace from "rollup-plugin-re";
-import banner from "rollup-plugin-banner";
+import appendBin from "./rollup-plugin-bin";
 
 export default defineConfig({
   input: {
@@ -14,7 +13,7 @@ export default defineConfig({
   // external: (name) => /.*excel-export.*/.test(name), // ['excel-export']
   output: {
     dir: "bin",
-    format: "cjs",
+    format: "es",
     // file: ["ml-version.js", "ml-api.js"],
     sourcemap: false,
   },
@@ -27,9 +26,10 @@ export default defineConfig({
     //     "// bin": "#!/usr/bin/env node",
     //   },
     // }),
-    console.log(1),
-    console.log(2),
-    banner("#!/usr/bin/env node"),
+    // console.log(1),
+    // console.log(2),
+    // banner("#!/usr/bin/env node"),
+    appendBin(),
   ],
   watch: false,
 });

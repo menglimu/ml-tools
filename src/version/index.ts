@@ -1,4 +1,7 @@
-// bin
+/**
+ * @Author: wenlin
+ * @Description: 生产当前git和发布信息
+ */
 import { execSync } from "child_process";
 import fs from "fs";
 
