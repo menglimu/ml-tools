@@ -9,6 +9,7 @@ export default defineConfig({
   input: {
     "ml-version": "src/version/index.ts",
     "ml-api": "src/api/index.ts",
+    "ml-clone": "src/clone/index.ts",
   },
   // external: (name) => /.*excel-export.*/.test(name), // ['excel-export']
   output: {
