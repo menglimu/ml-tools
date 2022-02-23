@@ -12,9 +12,10 @@ export default defineConfig({
     "ml-clone": "src/clone/index.ts",
   },
   // external: (name) => /.*excel-export.*/.test(name), // ['excel-export']
+  external: ["inquirer", "excel-export"],
   output: {
     dir: "bin",
-    format: "es",
+    format: "esm",
     // file: ["ml-version.js", "ml-api.js"],
     sourcemap: false,
   },

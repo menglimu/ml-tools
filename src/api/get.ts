@@ -1,10 +1,9 @@
-
-import * as http from 'http';
+import http from "http";
 // 根据node的http模块进行数据的请求
 export default function get(url: string, options?) {
   return new Promise<any>((resolve, reject) => {
     http
-      .get(url, options, res => {
+      .get(url, options, (res) => {
         const { statusCode } = res;
         const contentType = res.headers["content-type"];
 
@@ -24,7 +23,7 @@ export default function get(url: string, options?) {
 
         res.setEncoding("utf8");
         let rawData = "";
-        res.on("data", chunk => {
+        res.on("data", (chunk) => {
           rawData += chunk;
         });
         res.on("end", () => {
@@ -36,7 +35,7 @@ export default function get(url: string, options?) {
           }
         });
       })
-      .on("error", e => {
+      .on("error", (e) => {
         reject(e);
         console.error(`Got error: ${e.message}`);
       });

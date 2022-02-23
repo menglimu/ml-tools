@@ -3,8 +3,8 @@
  * @Description: 根据接口文档自动生成api
  */
 
-import * as fs from "fs";
-import * as child_process from "child_process";
+import fs from "fs";
+import child_process from "child_process";
 import get from "./get";
 import { Group, Interface, Module } from "./type";
 
