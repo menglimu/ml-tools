@@ -18,7 +18,11 @@ fs.mkdirSync(dir, { recursive: true });
 fs.writeFileSync(
   `${dir}/version.html`,
   `
-<html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>版本信息</title>
+</head>
 <pre>
 打包分支：${branch}
 打包时间：${new Date().toLocaleString()}
