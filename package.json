@@ -1,13 +1,13 @@
 {
   "name": "ml-tools-dev",
-  "version": "1.0.6",
+  "version": "1.1.4",
   "description": "工具集",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "route": "node --experimental-specifier-resolution=node --loader ts-node/esm src/route2excel/index.ts",
-    "api": "node --experimental-specifier-resolution=node --loader ts-node/esm src/api/index.ts",
-    "ml-version": "node --experimental-specifier-resolution=node --loader ts-node/esm src/version/index.ts",
+    "route": "yarn ts-run src/route2excel/index.ts",
+    "api": "yarn ts-run src/api/index.ts",
+    "ml-version": "yarn ts-run src/version/index.ts",
     "ts-run": "node --experimental-specifier-resolution=node --loader ts-node/esm",
     "build": "rollup -c",
     "patch": "npm run build && npm version patch && npm publish",
@@ -20,6 +20,10 @@
   },
   "author": "wenlin",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/menglimu/ml-tools.git"
+  },
   "dependencies": {
     "inquirer": "^8.2.0"
   },
@@ -36,7 +40,6 @@
     "rollup-plugin-re": "^1.0.7",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.5.0",
-    "tslib": "^2.3.1",
     "typescript": "^4.5.5"
   }
 }
